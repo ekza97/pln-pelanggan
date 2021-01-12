@@ -42,7 +42,7 @@
         <?php 
         if(isset($_GET['keyword'])):
             $key = $_GET['keyword'];
-            $query = mysqli_query($con,"SELECT pelanggan.*,tagihan.jml_bayar,tagihan.tgl_bayar as tgl_sudah_bayar, MONTH(pelanggan.tgl_bayar) as bln, MONTH(tagihan.tgl_bayar) as bln_bayar FROM pelanggan JOIN tagihan ON pelanggan.id_pelanggan=tagihan.id_pelanggan WHERE no_meter LIKE '%$key%' ORDER BY tagihan.tgl_bayar DESC") or die(mysqli_error($con));
+            $query = mysqli_query($con,"SELECT pelanggan.*,tagihan.jml_bayar,tagihan.tgl_bayar as tgl_sudah_bayar, MONTH(pelanggan.tgl_bayar) as bln, MONTH(tagihan.tgl_bayar) as bln_bayar FROM pelanggan LEFT JOIN tagihan ON pelanggan.id_pelanggan=tagihan.id_pelanggan WHERE no_meter LIKE '%$key%' ORDER BY tagihan.tgl_bayar DESC") or die(mysqli_error($con));
             $row = mysqli_fetch_array($query);
         ?>
         <div class="col-md-12">

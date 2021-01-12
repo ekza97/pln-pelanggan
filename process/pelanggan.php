@@ -13,7 +13,7 @@ if(isset($_POST['tambah'])){
 
     $cek = mysqli_query($con,"SELECT * FROM pelanggan WHERE no_meter='$no_meter'") or die(mysqli_error($con));
     if(mysqli_num_rows($cek)==0){
-        $insert = mysqli_query($con,"INSERT INTO pelanggan (id_pelanggan, nama, no_hp, alamat, no_meter, daya, tgl_bayar) VALUES ('','$nama','$no_hp','$alamat','$no_meter','$daya','$tgl_bayar')") or die (mysqli_error($con));
+        $insert = mysqli_query($con,"INSERT INTO pelanggan (nama, no_hp, alamat, no_meter, daya, tgl_bayar) VALUES ('$nama','$no_hp','$alamat','$no_meter','$daya','$tgl_bayar')") or die (mysqli_error($con));
         if($insert){
             $msg = 'Berhasil menambahkan data pelanggan';
         }else{
